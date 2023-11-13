@@ -397,8 +397,8 @@ ofus() {
 
 fix_key() {
     unset nomkey
-    echo " Bienvenido, Porfavor dijita el Nombre del DUEÑO de la KEYs"
-    echo "             DIJITA  0  PARA REGRESAR "
+    echo " Bienvenido, Porfavor digita el Nombre del DUEÑO de la KEYs"
+    echo "             DIGITE  0  PARA REGRESAR "
     read -p " RESELLER deL Keys : " nomkey
     [[ $nomkey = 0 ]] && return
     [[ -z $nomkey ]] && {
@@ -455,7 +455,7 @@ att_gen_key() {
     keys=($keys)
     msg -bar
     while [[ -z ${keys[$value]} || -z $value ]]; do
-        read -p "Escolha qual Atualizar[t=todos]: " -e -i 0 value
+        read -p "Escoja cual actualizar[t=todos]: " -e -i 0 value
     done
     [[ $value = 0 ]] && return
     if [[ $value = @(t|T) ]]; then
@@ -589,14 +589,14 @@ message_gen() {
     [[ -z $MSGNEW ]] && return
     echo $MSGNEW >/etc/menu_ito
     cat /etc/menu_ito >${SCPT_DIR}/menu_credito
-    read -p "Ingresa tu Numero de Contacto o tu ALIAS de TELEGRAM: " MSGNEW
+    read -p "Ingresa tu Número de Contacto o tu ALIAS de TELEGRAM: " MSGNEW
     echo $MSGNEW >/etc/menu_numito && chmod +rwx /etc/menu_numito
     msg -bar
 }
 
 act_gen() {
     while [[ ${varread} != @([0-2]) ]]; do
-        echo -e "Bienvenido al Actualizador, Escoje que vas a Actualizar\n 1).- KEY ACTIVA\n 2).- Creditos del ADM\n " | lolcat
+        echo -e "Bienvenido al Actualizador, Escoge que vas a Actualizar\n 1).- KEY ACTIVA\n 2).- Creditos del ADM\n " | lolcat
         echo -ne "${cor[6]}"
         read -p " Escoje :" varread
     done
