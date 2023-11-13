@@ -299,10 +299,10 @@ install_ini() {
     [[ $(dpkg --get-selections | grep -w "pv" | head -1) ]] && ESTATUS=$(echo -e "\033[92mINSTALADO") &>/dev/null
     echo -e "\033[97m  # apt-get install PV   ................ $ESTATUS "
     msg -bar
-    echo -e "\033[92m La instalacion de paquetes necesarios a finalizado"
+    echo -e "\033[92m La instalación de paquetes necesarios a finalizado"
     msg -bar
-    echo -e "\033[97m Si la instalacion de paquetes tiene fallas"
-    echo -ne "\033[97m     Reintentar Install Paquetes [ s/n ]: "
+    echo -e "\033[97m Si la instalación de paquetes tiene fallas"
+    echo -ne "\033[97m     Reintentar Instalar Paquetes [ s/n ]: "
     read inst
     [[ $inst = @(s|S|y|Y) ]] && install_ini
 }
@@ -351,7 +351,7 @@ function_verify() {
         msg -bar
         echo -e "\e[32m      LA IP $(wget -qO- ipv4.icanhazip.com) ESTA AUTORIZADA!"
         [[ -e /usr/bin/downBase ]] || echo 'https://raw.githubusercontent.com/emirjorge/premium-bot/master/Otros/lista' >/usr/bin/downBase && chmod 777 /usr/bin/downBase
-        v1=$(curl -sSL "https://raw.githubusercontent.com/emirjorge/premium-bot/master/adm-lite/v-local.log")
+        v1=$(curl -sSL "https://raw.githubusercontent.com/emirjorge/premium/master/premium/v-local.log")
         [[ ! -e /bin/downloadbot ]] && {
             [[ $link = 'https://raw.githubusercontent.com' ]] && echo "https://raw.githubusercontent.com" >/bin/downloadbot || echo "$(ofus $keybot)" >/bin/downloadbot
             chmod +x /bin/downloadbot
