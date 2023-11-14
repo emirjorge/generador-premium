@@ -267,11 +267,9 @@ ports_() {
     echo -e "\033[1;34m ${TOP}\033[1;31m TOTAL:\033[1;32m "$mt "\033[1;34m ${TOP} \033[1;31m Libre:\033[1;32m "$ram2 "\033[1;34m ${TOP} \033[1;31m Usada:\033[1;32m"$ram3
     echo -e "\033[1;34m ${TOP}\033[1;31m Uso RAM: \033[1;32m"$_usor "\033[1;34m${TOP}\033[1;31m Uso CPU: \033[1;32m$_usop \033[1;34m ${TOP}\033[1;31m Cache:\033[1;32m"$mb # $CPU"%"
     msg -bar
-    echo -e "\033[0;31mSystem:\033[0;32m$(cat /etc/issue.net) \033[0;31mIP:\033[0;32m $(wget -qO- ipv4.icanhazip.com)"
+    echo -e "\033[0;31m Sistema:\033[0;32m $(cat /etc/issue.net) \033[0;31mIP:\033[0;32m $(wget -qO- ipv4.icanhazip.com)"
     msg -bar
-    echo ""
     echo -ne "$(msg -verd "  Keys Usadas") $(msg -azu " : ") " && msg -bra "\033[1;41m $(cat $IVAR) $porta"
-    echo ""
 }
 
 SCPT_DIR="/etc/SCRIPT"
@@ -742,7 +740,7 @@ selection_fun() {
     local range
     for ((i = 0; i <= $1; i++)); do range[$i]="$i "; done
     while [[ ! $(echo ${range[*]} | grep -w "$selection") ]]; do
-        echo -ne "\033[1;37mOpcion: " >&2
+        echo -ne "\033[1;37m Selecione una opción: " >&2
         read selection
         tput cuu1 >&2 && tput dl1 >&2
     done
@@ -807,7 +805,7 @@ menau() {
         figlet -p -f smslant "@ChumoGH" | lolcat
         msg -bar
     }
-    [[ ! $PID_GEN ]] && PID_GEN="\033[0;35m[\033[0;31mDETENIDO\033[0;35m]" || PID_GEN="\033[0;35m[\033[0;36mWORKING\033[0;35m]"
+    [[ ! $PID_GEN ]] && PID_GEN="\033[0;35m[\033[0;31mDETENIDO\033[0;35m]" || PID_GEN="\033[0;35m[\033[0;36mFUNCIONANDO\033[0;35m]"
     [[ ! $PID_GEN1 ]] && PID_GEN1="\033[0;35m[\033[0;31m OFF \033[0;35m]" || PID_GEN1="\033[0;35m[\033[0;36m ON \033[0;35m]"
     [[ ! $PID_BGEN1 ]] && {
         PID_BGEN1="\033[0;35m[\033[0;31mNO INICIADO\033[0;35m]"
@@ -818,25 +816,25 @@ menau() {
     [[ "${limcont}" -ge "998" ]] && limted="50" || {
         [[ -e /etc/ADM-db/limit ]] && limted=$(cat /etc/ADM-db/limit)
     }
-    [[ -z $limted ]] && limted="No Found"
+    [[ -z $limted ]] && limted="No Encontrado"
     msg -bar
     cd ${SCPT_DIR}
     echo -e "\033[0;35m |\033[0;32m $(find . -type f | wc -l) \033[0;35m|\033[0;33m Ficheros\033[0;32m >\033[1;31m ${SCPT_DIR} \033[0;34mcon\033[0;35m |\033[0;32m$(ls /etc/http-shell/ | grep name | wc -l)\033[0;35m|\033[0;33m\033[0;33m KEYs"
     cd $HOME
     msg -bar
     meu_ip
-    [[ -z $add_fun ]] || echo -e "\033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m<\033[0;33m Alterar Limite del BOT ( $limted )" #$PID_GEN1\033[0m
-    echo -e "\033[0;35m[\033[0;36m2\033[0;35m] \033[0;34m<\033[0;33m APAGAR/VER KEYS"
-    #echo -e "\033[0;35m[\033[0;36mx\033[0;35m] \033[0;34m<\033[0;33m ------------------------" #KEYS ( GENERADOR )"
-    echo -e "\033[0;35m[\033[0;36m4\033[0;35m] \033[0;34m<\033[0;34m Generar Keys ALEATORIAS"
-    echo -e "\033[0;35m[\033[0;36m5\033[0;35m] \033[0;34m<\033[0;33m INICIAR/PARAR KEYGEN $PID_GEN\033[0m"
-    echo -e "\033[0;35m[\033[0;36m6\033[0;35m] \033[0;34m<\033[0;33m REGISTRO DE KEYS USADAS"
-    echo -e "\033[0;35m[\033[0;36m7\033[0;35m] \033[0;34m<\033[0;33m Checar KEY ACTIVADA"
-    echo -e "\033[0;35m[\033[0;36m8\033[0;35m] \033[0;34m<\033[0;33m ACTUALIZAR GENERADOR/KEY/CREDITOS "
-    echo -e "\033[0;35m[\033[0;36m9\033[0;35m] \033[0;34m<\033[0;33m Actualizar KEY"
-    echo -e "\033[0;35m[\033[0;36m10\033[0;35m] \033[0;34m<\033[0;33m CONFIGURAR BOT DE TELEGRAM $PID_BGEN1\033[0m"
-    [[ -z $add_fun ]] || echo -e "\033[0;35m[\033[0;36m11\033[0;35m] \033[0;34m<\033[0;33m + / - CREDITOS Por ID"
-    echo -e "\033[0;35m[\033[0;36m0\033[0;35m] \033[0;34m<\033[0;33m SALIR"
+    [[ -z $add_fun ]] || echo -e " \033[0;35m[\033[0;36m1\033[0;35m] \033[0;34m<\033[0;33m Alterar Limite del BOT ( $limted )" #$PID_GEN1\033[0m
+    echo -e " \033[0;35m[\033[0;36m2\033[0;35m] \033[0;34m<\033[0;33m APAGAR/VER KEYS"
+    #echo -e " \033[0;35m[\033[0;36mx\033[0;35m] \033[0;34m<\033[0;33m ------------------------" #KEYS ( GENERADOR )"
+    echo -e " \033[0;35m[\033[0;36m4\033[0;35m] \033[0;34m<\033[0;32m Generar Keys ALEATORIAS"
+    echo -e " \033[0;35m[\033[0;36m5\033[0;35m] \033[0;34m<\033[0;33m INICIAR/PARAR KEYGEN $PID_GEN\033[0m"
+    echo -e " \033[0;35m[\033[0;36m6\033[0;35m] \033[0;34m<\033[0;33m REGISTRO DE KEYS USADAS"
+    echo -e " \033[0;35m[\033[0;36m7\033[0;35m] \033[0;34m<\033[0;33m Checar KEY ACTIVADA"
+    echo -e " \033[0;35m[\033[0;36m8\033[0;35m] \033[0;34m<\033[0;33m ACTUALIZAR GENERADOR/KEY/CREDITOS "
+    echo -e " \033[0;35m[\033[0;36m9\033[0;35m] \033[0;34m<\033[0;33m Actualizar KEY"
+    echo -e " \033[0;35m[\033[0;36m10\033[0;35m] \033[0;34m<\033[0;33m CONFIGURAR BOT DE TELEGRAM $PID_BGEN1\033[0m"
+    [[ -z $add_fun ]] || echo -e " \033[0;35m[\033[0;36m11\033[0;35m] \033[0;34m<\033[0;33m + / - CREDITOS Por ID"
+    echo -e " \033[0;35m[\033[0;36m0\033[0;35m] \033[0;34m<\033[0;33m SALIR"
     msg -bar
 
 }
