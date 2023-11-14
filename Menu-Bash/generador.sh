@@ -112,15 +112,15 @@ back() {
 msg() {
     local colors="/etc/new-adm-color"
     if [[ ! -e $colors ]]; then
-        COLOR[0]='\033[1;37m' #BRAN='\033[1;37m'
-        COLOR[1]='\e[31m'     #VERMELHO='\e[31m'
-        COLOR[2]='\e[32m'     #VERDE='\e[32m'
-        COLOR[3]='\e[33m'     #AMARELO='\e[33m'
-        COLOR[4]='\e[34m'     #AZUL='\e[34m'
-        COLOR[5]='\e[35m'     #MAGENTA='\e[35m'
-        COLOR[6]='\033[1;97m' #MAG='\033[1;36m'
-        COLOR[7]='\033[1;49;95m'
-        COLOR[8]='\033[1;49;96m'
+        COLOR[0]='\033[1;37m' #BLANCO='\033[1;37m'
+        COLOR[1]='\e[31m' #ROJO='\e[31m'
+        COLOR[2]='\e[32m' #VERDE='\e[32m'
+        COLOR[3]='\e[33m' #AMARILLO='\e[33m'
+        COLOR[4]='\e[34m' #AZUL='\e[34m'
+        COLOR[5]='\e[35m' #MAGENTA='\e[35m'
+        COLOR[6]='\033[1;97m' #CELESTE='\033[1;97m'
+        COLOR[7]='\033[1;49;95m' #MAGENTA OSCURO='\033[1;49;95m'
+        COLOR[8]='\033[1;49;96m' #CELESTE OSCURO='\033[1;49;96m'
     else
         local COL=0
         for number in $(cat $colors); do
@@ -159,12 +159,11 @@ msg() {
     -blak2) cor="${COLOR[8]}" && echo -e "${cor}${2}${SEMCOR}" ;;
     -blu) cor="${COLOR[9]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}" ;;
     -blu1) cor="${COLOR[9]}" && echo -e "${cor}${2}${SEMCOR}" ;;
-    #-bar)ccor="${COLOR[1]}•••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
-    -bar) ccor="${COLOR[1]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
-    -bar1) ccor="${COLOR[1]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
-    -bar2) ccor="${COLOR[1]}=====================================================" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
-    -bar3) ccor="${COLOR[3]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
-    -bar4) ccor="${COLOR[5]}•••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
+    -bar) ccor="${COLOR[1]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
+    -bar1) ccor="${COLOR[1]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
+    -bar2) ccor="${COLOR[1]}========================================================" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
+    -bar3) ccor="${COLOR[3]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
+    -bar4) ccor="${COLOR[5]}••••••••••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${ccor}${SEMCOR}" ;;
     esac
 }
 
@@ -598,7 +597,7 @@ act_gen() {
     while [[ ${varread} != @([0-2]) ]]; do
         echo -e "Bienvenido al Actualizador, Escoge que vas a Actualizar\n 1).- KEY ACTIVA\n 2).- Creditos del ADM\n " | lolcat
         echo -ne "${cor[6]}"
-        read -p " Escoje :" varread
+        read -p " Escoge :" varread
     done
     msg -bar
     if [[ ${varread} = 0 ]]; then
