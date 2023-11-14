@@ -459,6 +459,7 @@ atualiza_fun() {
     msg -bar
     [[ -e $HOME/lista ]] && rm $HOME/lista
     [[ -d $HOME/update ]] && rm -rf $HOME/update
+    [[ -e $HOME/instalar.sh ]] && rm $HOME/instalar.sh
 }
 
 unset Key
@@ -468,3 +469,4 @@ clear
 check_ip
 function_verify
 atualiza_fun
+
