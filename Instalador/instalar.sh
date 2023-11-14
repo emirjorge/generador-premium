@@ -350,6 +350,7 @@ function_verify() {
         clear && clear
         msg -bar
         echo -e "\e[32m      LA IP $(wget -qO- ipv4.icanhazip.com) ESTA AUTORIZADA!"
+        msg -bar
         [[ -e /usr/bin/downBase ]] || echo 'https://raw.githubusercontent.com/emirjorge/premium-bot/master/Otros/lista' >/usr/bin/downBase && chmod 777 /usr/bin/downBase
         v1=$(curl -sSL "https://raw.githubusercontent.com/emirjorge/premium/master/premium/v-local.log")
         [[ ! -e /bin/downloadbot ]] && {
@@ -432,9 +433,9 @@ function aguarde() {
         done
         tput cnorm
     }
-    echo -ne "\033[1;37m TRASLADANDO FILES \033[1;32mSCRIPT \033[1;37me \033[1;32mAUTOGEN\033[1;32m.\033[1;33m.\033[1;31m. \033[1;33m"
+    echo -ne "\033[1;37m TRANSFIRIENDO ARCHIVOS \033[1;32mSCRIPT \033[1;37my \033[1;32mAUTOGEN\033[1;32m.\033[1;33m.\033[1;31m. \033[1;33m"
     helice
-    echo -e "\e[1D REALIZADO"
+    echo -e "\e[1D REALIZADO!"
 }
 
 atualiza_fun() {
@@ -447,7 +448,7 @@ atualiza_fun() {
     rm -f $HOME/files.log
     for arqs in $(ls $HOME/update); do
         echo -ne "\033[1;33m FILE \e[32m [${n}.gen] \e[0m "
-        fun_filez $arqs >/dev/null 2>&1 && echo -e "\033[1;31m- \033[1;31m $arqs (no Trasladado!)" || echo -e "\033[1;31m- \033[1;32m $arqs Trasladado!"
+        fun_filez $arqs >/dev/null 2>&1 && echo -e "\033[1;31m- \033[1;31m $arqs (NO TRANSFERIDO!)" || echo -e "\033[1;31m- \033[1;37m $arqs \033[1;32mTRANSFERIDO!"
         n=$(($n + 1))
     done
     mkdir -p /etc/SCRIPT
@@ -455,7 +456,7 @@ atualiza_fun() {
     wget -q -O /usr/bin/generar https://raw.githubusercontent.com/emirjorge/premium-bot/master/Menu-Bash/generador.sh && chmod +rwx /usr/bin/generar
     cd $HOME
     msg -bar
-    echo -e "\033[1;92m           DIGITE EL COMANDO: \033[1;33mgenerar  "
+    echo -e "\033[1;92m PARA USAR EL KEYGEN DIGITE EL COMANDO: \033[1;33mgenerar  "
     msg -bar
     [[ -e $HOME/lista ]] && rm $HOME/lista
     [[ -d $HOME/update ]] && rm -rf $HOME/update
