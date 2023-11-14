@@ -75,8 +75,8 @@ permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot")
   clear
   echo -e "\n\n\n\e[32m====================================================="
   echo -e "\e[32m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) ESTA AUTORIZADA!"
-  echo -e "      Mediante  $link Autorizada"
-  echo -e " 		por @Premium"
+  echo -e "      Mediante  $link "
+  echo -e " 	    Autorizada por @Premium "
   echo -e "      SI DESEAS USAR EL BOTGEN CONTACTE A @Premium"
   echo -e "\e[32m=====================================================\n\n\n\e[0m"
   CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
