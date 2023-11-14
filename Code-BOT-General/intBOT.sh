@@ -75,8 +75,9 @@ permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot")
   clear
   echo -e "\n\n\n\e[32m====================================================="
   echo -e "\e[32m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) ESTA AUTORIZADA!"
-  echo -e "      Mediante  $link Autorida por @ChumoGH"
-  echo -e "      SI DESEAS USAR EL BOTGEN CONTACTE A @ChumoGH"
+  echo -e "      Mediante  $link Autorizada"
+  echo -e " 		por @Premium"
+  echo -e "      SI DESEAS USAR EL BOTGEN CONTACTE A @Premium"
   echo -e "\e[32m=====================================================\n\n\n\e[0m"
   CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
   [[ -e /etc/nivbot ]] && { 
@@ -472,7 +473,7 @@ echo -e "$bar"
 read -p "IMG: " img 
 #[[ -z $img ]] && img="https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/favi.png"
 #[[ -z $img ]] && img="/var/www/html/bot_vmess_qr.png"
-[[ -z $MENSAJE ]] && MENSAJE="Hola, Mensale de Prueba del BotGen Generador!"
+[[ -z $MENSAJE ]] && MENSAJE="Hola, Mensaje de Prueba del BotGen Generador!"
 		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 		URG="https://api.telegram.org/bot$TOKEN/sendPhoto"
 		curl -s -X POST $URG -F chat_id=$ID -F photo="@$img" #-F caption="<code>New Script @ChumoGH</code>" #-F width="100" -F height="100"
@@ -557,7 +558,7 @@ echo -e "\033[0;35m[\033[0;36m0\033[0;35m] \033[0;34m<\033[0;33m SALIR"
 msg -bar
 selection=$(selection_fun 11)
 case ${selection} in
-0) gerar && exit ;;
+0) generar && exit ;;
 1) ini_token;;
 2) start_bot;;
 3) ini_id;;
