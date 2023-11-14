@@ -612,7 +612,7 @@ act_gen() {
 }
 
 rmv_iplib() {
-    echo -e "SERVIDORES DE KEY ATIVOS!"
+    echo -e "SERVIDORES DE KEY ACTIVOS!"
     rm /var/www/html/newlib && touch /var/www/html/newlib
     rm ${SCPT_DIR}/*.x.c &>/dev/null
     [[ -z $(ls $DIR | grep -v "ERROR-KEY") ]] && return
