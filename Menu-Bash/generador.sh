@@ -851,7 +851,7 @@ while :; do
     5) start_gen ;;
     6)
         echo -ne "\033[1;36m"
-        echo -e "$(cat /etc/generador-sh-log)" 2>/dev/null || echo "NINGUN LOG DE MOMENTO"
+        cat /etc/generador-sh-log 2>/dev/null || echo "NINGUN LOG DE MOMENTO"
         echo -ne "\033[0m" && read -p "Enter"
         ;;
     7) fum_ver ;;
