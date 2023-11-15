@@ -120,16 +120,16 @@ TIME=$(echo "${TIME}0"|bc)
 sleep ${TIME}s
 rm -rf /var/www/html/$KEY
 rm -rf /var/www/$KEY
-log="/etc/gerar-sh-log"
+log="/etc/generador-sh-log"
 _hora=$(printf '%(%D-%H:%M:%S)T') 
 if [[ -d $FILE2 ]]; then
 PERM="${DIR}/${KEY}/keyfixa" 
 if [[ -e $PERM ]]; then
   if [[ $(cat $PERM) != "$USRIP" ]]; then
-  log="/etc/gerar-sh-log"
+  log="/etc/generador-sh-log"
   echo "$(cat ${FILE2}.name) | IP-FIJA:$USRIP | ${_key} | $_hora" >> $log
   echo "$(cat ${FILE2}.name) | IP-FIJA:$USRIP | ${_key} | $_hora" >> ${onliCHECK}/checkIP.log && chmod +x ${onliCHECK}/checkIP.log
-  #cat /etc/gerar-sh-log > ${onliCHECK}/checkIP.log
+  #cat /etc/generador-sh-log > ${onliCHECK}/checkIP.log
   rm -rf $FILE2
   rm -f ${FILE2}.name
   fi
