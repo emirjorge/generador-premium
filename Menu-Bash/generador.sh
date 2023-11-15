@@ -229,7 +229,7 @@ check_ip() {
     MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
     MIP2=$(wget -qO- ipv4.icanhazip.com)
     [[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP"
-    echo "$IP" >/usr/bin/vendor_code
+    echo "$IP" > /usr/bin/vendor_code
 }
 
 ####inicio puertos
@@ -258,9 +258,9 @@ ports_() {
     [[ ! $PID_GEN1 ]] && PID_GEN1="\033[0;31m[\033[0;35mCOLAPZADO\033[0;31m]" || PID_GEN1="\033[0;35m[\033[0;36mFUNCIONANDO\033[0;31m]"
     porta=$(if netstat -tunlp | grep nc.tradit 1>/dev/null 2>/dev/null; then
         echo -e "\033[0;36m   Keygen: \033[0;31m[\033[0;32m ON \033[0;31m]"
-    else
+        else
         echo -e "\033[0;36m   Keygen: \033[0;35m[\033[0;31m OFF \033[0;35m]"
-    fi)
+        fi)
     [[ $v1 = $v2 ]] && vesaoSCT="\033[1;32m${txt[315]} \033[0;33m ($v2)" || vesaoSCT="\033[1;31m${txt[316]}\033[0;33m($v2) �72 \033[1;32m($v1)\033[1;31m"
     echo -e "  ${cor[2]} ${vesaoSCT} ${cor[0]}"
     msg -bar
@@ -299,7 +299,7 @@ mudar_instacao() {
         echo "[0] - FINALIZAR PROCEDIMIENTO"
         i=1
         for arqx in $(ls ${SCPT_DIR}); do
-            [[ $arqx = @(gerar.sh|http-server.py) ]] && continue
+            [[ $arqx = @(generador.sh|http-server.py) ]] && continue
             [[ $(echo $BASICINST | grep -w "$arqx") ]] && echo "[$i] - [X] - $arqx" || echo "[$i] - [ ] - $arqx"
             var[$i]="$arqx"
             let i++
@@ -329,7 +329,7 @@ list_fix() {
     [[ ! -e ${DIR} ]] && mkdir ${DIR}
     #ENVIA ARQS
     i=0
-    VALUE+="gerar.sh http-server.py $BASICINST"
+    VALUE+="generador.sh http-server.py $BASICINST"
     for arqx in $(ls ${SCPT_DIR}); do
         [[ $(echo $VALUE | grep -w "${arqx}") ]] && continue
         echo -e "[$i] -> ${arqx}"
@@ -371,7 +371,7 @@ list_fix() {
 ofus() {
     unset txtofus
     number=$(expr length $1)
-    for ((i = 1; i < $number + 1; i++)); do
+    for ((i=1; i<$number+1; i++)); do
         txt[$i]=$(echo "$1" | cut -b $i)
         case ${txt[$i]} in
         ".") txt[$i]="x" ;;
@@ -394,7 +394,7 @@ ofus() {
 
 fix_key() {
     unset nomkey
-    echo " Bienvenido, Porfavor digita el Nombre del DUEÑO de la KEYs"
+    echo " Bienvenido, Por favor digita el Nombre del DUEÑO de la KEYs"
     echo "             DIGITE  0  PARA REGRESAR "
     read -p " RESELLER deL Keys : " nomkey
     [[ $nomkey = 0 ]] && return
@@ -851,7 +851,7 @@ while :; do
     5) start_gen ;;
     6)
         echo -ne "\033[1;36m"
-        echo -e "$(cat /etc/gerar-sh-log)" 2>/dev/null || echo "NINGUN LOG DE MOMENTO"
+        echo -e "$(cat /etc/generador-sh-log)" 2>/dev/null || echo "NINGUN LOG DE MOMENTO"
         echo -ne "\033[0m" && read -p "Enter"
         ;;
     7) fum_ver ;;
