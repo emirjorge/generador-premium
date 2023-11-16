@@ -565,13 +565,11 @@ case ${selection} in
 4) ini_res;;
 5) msj_prueba;;
 6) ayuda_fun;;
-7) source <(curl -sSL https://www.dropbox.com/s/f5mlwun3hkpq6k8/bot-permited.sh) ;;
-8) act-bot ;;
 7) lim-bot ;;
 8) change_pay;;
 9) respon;;
-10)msj_ind;;
-11)edit_cost;;
+10) msj_ind;;
+11) edit_cost;;
 *) bot_gen;;
 esac
 }
