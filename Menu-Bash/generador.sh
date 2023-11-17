@@ -630,17 +630,18 @@ rmv_iplib() {
 bot_menu() {
     [[ -e /etc/nivbot ]] || echo "0" >/etc/nivbot
     [[ -d /etc/ADM-db ]] && chmod +rwx /etc/ADM-db/*
-    echo -ne "\033[1;31m[ ! ] RESPALDANDO USUARIO ADMINISTRADOR "
+    echo -ne "\033[1;31m[ ! ] RESPALDANDO DATOS DE ADMINISTRADOR "
     (
-        [[ -e /etc/ADM-db/sources/costes ]] && mv /etc/ADM-db/sources/costes $HOME/costes
-        [[ -e /etc/ADM-db/token ]] && mv /etc/ADM-db/token $HOME/token
-        [[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID $HOME/Admin-ID
-        [[ -e /etc/ADM-db/User-ID ]] && mv /etc/ADM-db/User-ID $HOME/User-ID
-        [[ -e /etc/ADM-db/limit ]] && mv /etc/ADM-db/limit $HOME/limit
-        [[ -e /etc/ADM-db/resell ]] && mv /etc/ADM-db/resell $HOME/resell
-        [[ -e /etc/ADM-db/ress ]] && mv /etc/ADM-db/ress $HOME/ress
-        [[ -e /etc/ADM-db/num-key.cont ]] && mv /etc/ADM-db/num-key.cont $HOME/num-key.cont
-    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
+        [[ ! -d $HOME/Backup ]] && mkdir $HOME/Backup
+        [[ -e /etc/ADM-db/sources/costes ]] && mv /etc/ADM-db/sources/costes $HOME/Backup/costes
+        [[ -e /etc/ADM-db/token ]] && mv /etc/ADM-db/token $HOME/Backup/token
+        [[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID $HOME/Backup/Admin-ID
+        [[ -e /etc/ADM-db/User-ID ]] && mv /etc/ADM-db/User-ID $HOME/Backup/User-ID
+        [[ -e /etc/ADM-db/limit ]] && mv /etc/ADM-db/limit $HOME/Backup/limit
+        [[ -e /etc/ADM-db/resell ]] && mv /etc/ADM-db/resell $HOME/Backup/resell
+        [[ -e /etc/ADM-db/ress ]] && mv /etc/ADM-db/ress $HOME/Backup/ress
+        [[ -e /etc/ADM-db/num-key.cont ]] && mv /etc/ADM-db/num-key.cont $HOME/Backup/num-key.cont
+    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLÓ]"
     rm -rf /etc/ADM-db
     CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
     [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
