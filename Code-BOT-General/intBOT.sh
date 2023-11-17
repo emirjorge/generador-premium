@@ -79,7 +79,7 @@ permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot")
   echo -e " 	    Autorizada por @Premium "
   echo -e "      SI DESEAS USAR EL BOTGEN CONTACTE A @Premium"
   echo -e "\e[32m=====================================================\n\n\n\e[0m"
-  CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+  CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
   [[ -e /etc/nivbot ]] && { 
   i=$(cat < /etc/nivbot)
   lv=$(($i+1))
@@ -377,7 +377,7 @@ bot_conf () {
 [[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID /root/Backup/Admin-ID
 check_ip
 function_verify
-instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
+instaled="/etc/ADM-db/sources" && [[ ! -d ${instaled} ]] && download
 }
 
 msj_prueba () {
