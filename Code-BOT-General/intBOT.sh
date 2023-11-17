@@ -372,8 +372,9 @@ bot_gen
 }
 
 bot_conf () {
-[[ -e /etc/ADM-db/token ]] && mv /etc/ADM-db/token /root/token
-[[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID /root/Admin-ID
+[[ ! -d $HOME/Backup ]] && mkdir $HOME/Backup
+[[ -e /etc/ADM-db/token ]] && mv /etc/ADM-db/token /root/Backup/token
+[[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID /root/Backup/Admin-ID
 check_ip
 function_verify
 instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
