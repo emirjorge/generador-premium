@@ -253,17 +253,17 @@ echo -ne "\033[1;33mFichero \033[1;31m[${n}.bot] "
 n=$(($n + 1))
 done
 cd $HOME && rm -rf $HOME/update && rm -f $HOME/files.tar
-echo -ne "\033[1;31m[ ! ] RESTAUDANDO ADMINISTRADOR "
+echo -ne "\033[1;31m[ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
 (
-[[ -e $HOME/costes ]] && mv $HOME/costes /etc/ADM-db/sources/costes 
-[[ -e $HOME/token ]] && mv $HOME/token /etc/ADM-db/token 
-[[ -e $HOME/resell ]] && mv $HOME/resell /etc/ADM-db/resell
-[[ -e $HOME/Admin-ID ]] && mv $HOME/Admin-ID /etc/ADM-db/Admin-ID 
-[[ -e $HOME/User-ID ]] && mv $HOME/User-ID /etc/ADM-db/User-ID 
-[[ -e $HOME/ress ]] && mv $HOME/ress /etc/ADM-db/ress
-[[ -e $HOME/limit ]] && mv $HOME/limit /etc/ADM-db/limit
-[[ -e $HOME/num-key.cont ]] && mv $HOME/num-key.cont /etc/ADM-db/num-key.cont
-) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FAIL]"
+[[ -e $HOME/Backup/costes ]] && mv $HOME/Backup/costes /etc/ADM-db/sources/costes 
+[[ -e $HOME/Backup/token ]] && mv $HOME/Backup/token /etc/ADM-db/token 
+[[ -e $HOME/Backup/resell ]] && mv $HOME/Backup/resell /etc/ADM-db/resell
+[[ -e $HOME/Backup/Admin-ID ]] && mv $HOME/Backup/Admin-ID /etc/ADM-db/Admin-ID 
+[[ -e $HOME/Backup/User-ID ]] && mv $HOME/Backup/User-ID /etc/ADM-db/User-ID 
+[[ -e $HOME/Backup/ress ]] && mv $HOME/Backup/ress /etc/ADM-db/ress
+[[ -e $HOME/Backup/limit ]] && mv $HOME/Backup/limit /etc/ADM-db/limit
+[[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
+) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLIDO]"
 [[ ! -e ${CIDdir}/resell ]] && echo "@ChumoGH" > ${CIDdir}/resell
 [[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : chumogh@outlook.com" > /etc/mpayu && echo "593987072611" > /etc/numctc
  rm $HOME/lista-arq &>/dev/null
