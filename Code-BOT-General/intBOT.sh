@@ -530,19 +530,19 @@ echo -e " \033[7;49;35m ${TTini} 🐲 BotGEN ChumoGH${TTcent}ADM $(cat ${CIDdir}
 msg -bar
 echo -e "  - LIMITADOR \033[1;32m ( $limted ) \033[1;37m KILL ID VENCIDOS ${PID_kill} "
 msg -bar 
-echo -e "\033[0;35m[\033[0;36m1\033[0;35m] \033[0;35m> \033[1;37m TOKEN DEL BOT $tk "
-echo -e "\033[0;35m[\033[0;36m2\033[0;35m] \033[0;35m> \033[1;37m INICIAR/PARAR BOT $PID_GEN\033[0m"
-echo -e "\033[0;35m[\033[0;36m3\033[0;35m] \033[0;35m> \033[1;37m ID DE USUARIO TELEGRAM  $adid"
-echo -e "\033[0;35m[\033[0;36m4\033[0;35m] \033[0;35m> \033[1;37m Cambiar Contacto -> $(cat < ${CIDdir}/resell)"
-echo -e "\033[0;35m[\033[0;36m5\033[0;35m] \033[0;35m> \033[1;37m MENSAJE DE PRUEBA"
-echo -e "\033[0;35m[\033[0;36m6\033[0;35m] \033[0;36m> \033[1;37m MANUAL De Uso"
-echo -e "\033[0;35m[\033[0;36m7\033[0;35m] \033[0;35m> \033[1;37m Limite de KEYS "
-echo -e "\033[0;35m[\033[0;36m8\033[0;35m] \033[0;35m> \033[1;37m ENLACES $nm | $dn | $ct "
-echo -e "\033[0;35m[\033[0;36m9\033[0;35m] \033[0;35m> \033[1;37m $rfij"
-echo -e "\033[0;35m[\033[0;36m10\033[0;35m] \033[0;35m> \033[1;37m MSG POR ID"
-echo -e "\033[0;35m[\033[0;36m11\033[0;35m] \033[0;35m> \033[1;37m Modificar COSTES DEL BOT"
+echo -e "\033[0;35m [\033[0;36m1\033[0;35m] \033[0;35m-> \033[1;37m TOKEN DEL BOT $tk "
+echo -e "\033[0;35m [\033[0;36m2\033[0;35m] \033[0;35m-> \033[1;37m INICIAR/PARAR BOT $PID_GEN\033[0m"
+echo -e "\033[0;35m [\033[0;36m3\033[0;35m] \033[0;35m-> \033[1;37m ID DE USUARIO TELEGRAM  $adid"
+echo -e "\033[0;35m [\033[0;36m4\033[0;35m] \033[0;35m-> \033[1;37m Cambiar Contacto -> $(cat < ${CIDdir}/resell)"
+echo -e "\033[0;35m [\033[0;36m5\033[0;35m] \033[0;35m-> \033[1;37m MENSAJE DE PRUEBA"
+echo -e "\033[0;35m [\033[0;36m6\033[0;35m] \033[0;35m-> \033[1;37m MANUAL De Uso 📖 "
+echo -e "\033[0;35m [\033[0;36m7\033[0;35m] \033[0;35m-> \033[1;37m Limite de KEYS "
+echo -e "\033[0;35m [\033[0;36m8\033[0;35m] \033[0;35m-> \033[1;37m ENLACES $nm | $dn | $ct "
+echo -e "\033[0;35m [\033[0;36m9\033[0;35m] \033[0;35m-> \033[1;37m $rfij"
+echo -e "\033[0;35m [\033[0;36m10\033[0;35m] \033[0;35m-> \033[1;37m MSG POR ID"
+echo -e "\033[0;35m [\033[0;36m11\033[0;35m] \033[0;35m-> \033[1;37m Modificar COSTES DEL BOT"
 msg -bar
-echo -e "\033[0;35m[\033[0;36m0\033[0;35m] \033[0;34m<\033[0;33m SALIR"
+echo -e "\033[0;35m [\033[0;36m0\033[0;35m] \033[0;34m<-\033[0;33m SALIR"
 msg -bar
 selection=$(selection_fun 11)
 case ${selection} in
