@@ -361,6 +361,7 @@ function_verify
 instaled="/etc/ADM-db/sources" 
 if [[ ! -d "${instaled}" ]]; then
 	download
+	sleep 1
 fi
 bot_gen
 
