@@ -628,6 +628,15 @@ rmv_iplib() {
 }
 
 bot_menu() {
+    CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+    [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
+    sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
+    source ${CIDdir}/confbot.sh && rm -f ${CIDdir}/confbot.sh
+    bot_conf
+}
+
+act_botgen() {
+    #RESPALDAR DATOS DEL ADMI
     [[ -e /etc/nivbot ]] || echo "0" >/etc/nivbot
     [[ -d /etc/ADM-db ]] && chmod +rwx /etc/ADM-db/*
     echo -ne "\033[1;31m[ ! ] RESPALDANDO DATOS DE ADMINISTRADOR "
@@ -643,11 +652,42 @@ bot_menu() {
         [[ -e /etc/ADM-db/num-key.cont ]] && mv /etc/ADM-db/num-key.cont $HOME/Backup/num-key.cont
     ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLÓ]"
     rm -rf /etc/ADM-db
-    CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
-    [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
-    sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
-    source ${CIDdir}/confbot.sh && rm -f ${CIDdir}/confbot.sh
-    bot_conf
+    sleep 1s
+    #
+    clear
+    clear
+    msg -bar
+    echo -e "\033[1;33mDescargando archivos... ESPERE "
+    msg -bar
+    mkdir -p /root/update &>/dev/null
+    wget -q --no-check-certificate -O $HOME/files.tar https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-Comandos/files.tar
+    [[ -d $HOME/update ]] && rm -rf $HOME/update/* || mkdir $HOME/update
+    [[ -e $HOME/files.tar ]] && tar xpf $HOME/files.tar -C $HOME/update && rm -f $HOME/files.tar
+    echo 999 > ${CIDdir}/limit
+    n=1
+    for arqx in `ls $HOME/update`; do
+    echo -ne "\033[1;33mFichero \033[1;31m[${n}.bot] "
+    [[ -e $HOME/update/$arqx ]] && veryfy_fun $arqx
+    n=$(($n + 1))
+    done
+    cd $HOME && rm -rf $HOME/update && rm -f $HOME/files.tar
+    echo -ne "\033[1;31m[ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
+    (
+        [[ -e $HOME/Backup/costes ]] && mv $HOME/Backup/costes /etc/ADM-db/sources/costes 
+        [[ -e $HOME/Backup/token ]] && mv $HOME/Backup/token /etc/ADM-db/token 
+        [[ -e $HOME/Backup/resell ]] && mv $HOME/Backup/resell /etc/ADM-db/resell
+        [[ -e $HOME/Backup/Admin-ID ]] && mv $HOME/Backup/Admin-ID /etc/ADM-db/Admin-ID 
+        [[ -e $HOME/Backup/User-ID ]] && mv $HOME/Backup/User-ID /etc/ADM-db/User-ID 
+        [[ -e $HOME/Backup/ress ]] && mv $HOME/Backup/ress /etc/ADM-db/ress
+        [[ -e $HOME/Backup/limit ]] && mv $HOME/Backup/limit /etc/ADM-db/limit
+        [[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
+    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLIDO]"
+    rm -rf /root/Backup
+    [[ ! -e ${CIDdir}/resell ]] && echo "@Premium" > ${CIDdir}/resell
+    [[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : emirjorge@premium.com" > /etc/mpayu && echo "51912345678" > /etc/numctc
+    rm $HOME/lista-arq &>/dev/null
+    systemctl restart BotGen-server &>/dev/null
+    echo -ne "Presione Enter para continuar" && read -p "Enter"
 }
 
 fum_ver() {
@@ -831,8 +871,8 @@ menau() {
     echo -e " \033[0;35m[\033[0;36m5\033[0;35m] \033[0;34m<\033[0;33m INICIAR/PARAR KEYGEN $PID_GEN\033[0m"
     echo -e " \033[0;35m[\033[0;36m6\033[0;35m] \033[0;34m<\033[0;33m REGISTRO DE KEYS USADAS"
     echo -e " \033[0;35m[\033[0;36m7\033[0;35m] \033[0;34m<\033[0;33m Checar KEY ACTIVADA"
-    echo -e " \033[0;35m[\033[0;36m8\033[0;35m] \033[0;34m<\033[0;33m ACTUALIZAR GENERADOR/KEY/CREDITOS "
-    echo -e " \033[0;35m[\033[0;36m9\033[0;35m] \033[0;34m<\033[0;33m Actualizar KEY"
+    echo -e " \033[0;35m[\033[0;36m8\033[0;35m] \033[0;34m<\033[0;33m ACTUALIZAR KEY/CREDITOS "
+    echo -e " \033[0;35m[\033[0;36m9\033[0;35m] \033[0;34m<\033[0;33m ACTUALIZAR BOT GENERADOR"
     echo -e " \033[0;35m[\033[0;36m10\033[0;35m] \033[0;34m<\033[0;33m CONFIGURAR BOT DE TELEGRAM $PID_BGEN1\033[0m"
     [[ -z $add_fun ]] || echo -e " \033[0;35m[\033[0;36m11\033[0;35m] \033[0;34m<\033[0;33m + / - CREDITOS Por ID"
     echo -e " \033[0;35m[\033[0;36m0\033[0;35m] \033[0;34m<\033[0;33m SALIR"
@@ -857,7 +897,7 @@ while :; do
         ;;
     7) fum_ver ;;
     8) act_gen ;;
-    9) att_gen_key ;;
+    9) act_botgen ;;
     10) bot_menu ;;
     11) alter_id ;;
     esac
