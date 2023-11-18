@@ -627,6 +627,17 @@ rmv_iplib() {
     read -p "Enter"
 }
 
+verifica_funcion () {
+SRC="/etc/ADM-db/sources" && [[ ! -d ${SRC} ]] && mkdir ${SRC}
+unset ARQ
+case $1 in
+"BotGen.sh") ARQ="/etc/ADM-db/";;
+*) ARQ="/etc/ADM-db/sources/";;
+esac
+mv -f $HOME/update/$1 ${ARQ}/$1 && echo -e "\033[1;31m- \033[1;32mRecibido!" || echo -e "\033[1;31m- \033[1;31mFalla (no recibido!)"
+chmod +x ${ARQ}/$1
+}
+
 bot_menu() {
     CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
     [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
@@ -667,7 +678,7 @@ act_botgen() {
     n=1
     for arqx in `ls $HOME/update`; do
     echo -ne "\033[1;33mFichero \033[1;31m[${n}.bot] "
-    [[ -e $HOME/update/$arqx ]] && veryfy_fun $arqx
+    [[ -e $HOME/update/$arqx ]] && verifica_funcion $arqx
     n=$(($n + 1))
     done
     cd $HOME && rm -rf $HOME/update && rm -f $HOME/files.tar
