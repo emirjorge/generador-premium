@@ -684,7 +684,7 @@ act_botgen() {
     n=$(($n + 1))
     done
     msg -bar
-    echo -e "\033[1;33mACTUALIZACIÓN... COMPLETA "
+    echo -e "\033[1;33m ACTUALIZACIÓN... COMPLETA "
     msg -bar
     cd $HOME && rm -rf $HOME/update && rm -f $HOME/files.tar
     echo -ne "\033[1;31m [ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
