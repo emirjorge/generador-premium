@@ -32,7 +32,7 @@ local selection="null"
 local range
 for((i=0; i<=$1; i++)); do range[$i]="$i "; done
 while [[ ! $(echo ${range[*]}|grep -w "$selection") ]]; do
-echo -ne "\033[1;37mOpcion: " >&2
+echo -ne "\033[1;37m Opción: " >&2
 read selection
 tput cuu1 >&2 && tput dl1 >&2
 done
