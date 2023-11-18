@@ -648,6 +648,7 @@ bot_menu() {
 
 act_botgen() {
     #RESPALDAR DATOS DEL ADMI
+    CIDdir="/etc/ADM-db"
     [[ -e /etc/nivbot ]] || echo "0" >/etc/nivbot
     [[ -d /etc/ADM-db ]] && chmod +rwx /etc/ADM-db/*
     echo -ne "\033[1;31m[ ! ] RESPALDANDO DATOS DE ADMINISTRADOR "
