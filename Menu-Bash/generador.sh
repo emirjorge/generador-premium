@@ -651,7 +651,7 @@ act_botgen() {
     CIDdir="/etc/ADM-db"
     [[ -e /etc/nivbot ]] || echo "0" >/etc/nivbot
     [[ -d /etc/ADM-db ]] && chmod +rwx /etc/ADM-db/*
-    echo -ne "\033[1;31m[ ! ] RESPALDANDO DATOS DE ADMINISTRADOR "
+    echo -ne "\033[1;31m [ ! ] RESPALDANDO DATOS DE ADMINISTRADOR "
     (
         [[ ! -d $HOME/Backup ]] && mkdir $HOME/Backup
         [[ -e /etc/ADM-db/sources/costes ]] && mv /etc/ADM-db/sources/costes $HOME/Backup/costes
@@ -662,7 +662,7 @@ act_botgen() {
         [[ -e /etc/ADM-db/resell ]] && mv /etc/ADM-db/resell $HOME/Backup/resell
         [[ -e /etc/ADM-db/ress ]] && mv /etc/ADM-db/ress $HOME/Backup/ress
         [[ -e /etc/ADM-db/num-key.cont ]] && mv /etc/ADM-db/num-key.cont $HOME/Backup/num-key.cont
-    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLÓ]"
+    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [SIN DATOS]"
     rm -rf /etc/ADM-db
     mkdir /etc/ADM-db
     sleep 1s
@@ -670,7 +670,7 @@ act_botgen() {
     clear
     clear
     msg -bar
-    echo -e "\033[1;33mDescargando archivos... ESPERE "
+    echo -e "\033[1;33m Descargando archivos... ESPERE "
     msg -bar
     mkdir -p /root/update &>/dev/null
     wget -q --no-check-certificate -O $HOME/files.tar https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-Comandos/files.tar
@@ -679,12 +679,15 @@ act_botgen() {
     echo 999 > ${CIDdir}/limit
     n=1
     for arqx in `ls $HOME/update`; do
-    echo -ne "\033[1;33mFichero \033[1;31m[${n}.bot] "
+    echo -ne "\033[1;33m Fichero \033[1;31m[${n}.bot] "
     [[ -e $HOME/update/$arqx ]] && verifica_funcion $arqx
     n=$(($n + 1))
     done
+    msg -bar
+    echo -e "\033[1;33mACTUALIZACIÓN... COMPLETA "
+    msg -bar
     cd $HOME && rm -rf $HOME/update && rm -f $HOME/files.tar
-    echo -ne "\033[1;31m[ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
+    echo -ne "\033[1;31m [ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
     (
         [[ -e $HOME/Backup/costes ]] && mv $HOME/Backup/costes /etc/ADM-db/sources/costes 
         [[ -e $HOME/Backup/token ]] && mv $HOME/Backup/token /etc/ADM-db/token 
@@ -694,13 +697,13 @@ act_botgen() {
         [[ -e $HOME/Backup/ress ]] && mv $HOME/Backup/ress /etc/ADM-db/ress
         [[ -e $HOME/Backup/limit ]] && mv $HOME/Backup/limit /etc/ADM-db/limit
         [[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
-    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLIDO]"
+    ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [SIN DATOS]"
     rm -rf /root/Backup
     [[ ! -e ${CIDdir}/resell ]] && echo "@Premium" > ${CIDdir}/resell
     [[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : emirjorge@premium.com" > /etc/mpayu && echo "51912345678" > /etc/numctc
     rm $HOME/lista-arq &>/dev/null
     systemctl restart BotGen-server &>/dev/null
-    echo -ne "Presione Enter para continuar" && read -p "Enter"
+    echo -ne "\033[1;37m Presione Enter para continuar" && read "Enter"
 }
 
 fum_ver() {
