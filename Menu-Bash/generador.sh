@@ -663,6 +663,7 @@ act_botgen() {
         [[ -e /etc/ADM-db/num-key.cont ]] && mv /etc/ADM-db/num-key.cont $HOME/Backup/num-key.cont
     ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLÓ]"
     rm -rf /etc/ADM-db
+    mkdir /etc/ADM-db
     sleep 1s
     #
     clear
