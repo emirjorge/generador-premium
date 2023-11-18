@@ -208,21 +208,6 @@ msg -bar
 fi
 read -p "Presione Enter para continuar "
 bot_gen
-
-
-#echo "sed -i "s/1001282138571/0/g" /etc/gerar-sh-log
-#echo '#!/bin/bash -e
-#sleep 24h' > ${CIDdir}/sumlimit
-#echo 'newq=$(cat < /etc/ADM-db/limit)
-#opcion=$(cat < /etc/limit)
-#newsum=$(($newq + $opcion))
-#echo "$newsum" > /etc/ADM-db/limit
-#screen -dmS sumlimit bash /etc/ADM-db/sumlimit&
-#exit' >> ${CIDdir}/sumlimit
-#echo -e "$bar"
-#read -p "Presione Enter para continuar "
-#screen -dmS sumlimit bash /etc/ADM-db/sumlimit&
-#bot_gen
 }
 
 veryfy_fun () {
@@ -255,20 +240,19 @@ done
 cd $HOME && rm -rf $HOME/update && rm -f $HOME/files.tar
 echo -ne "\033[1;31m[ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
 (
-[[ -e $HOME/Backup/costes ]] && mv $HOME/Backup/costes /etc/ADM-db/sources/costes 
-[[ -e $HOME/Backup/token ]] && mv $HOME/Backup/token /etc/ADM-db/token 
-[[ -e $HOME/Backup/resell ]] && mv $HOME/Backup/resell /etc/ADM-db/resell
-[[ -e $HOME/Backup/Admin-ID ]] && mv $HOME/Backup/Admin-ID /etc/ADM-db/Admin-ID 
-[[ -e $HOME/Backup/User-ID ]] && mv $HOME/Backup/User-ID /etc/ADM-db/User-ID 
-[[ -e $HOME/Backup/ress ]] && mv $HOME/Backup/ress /etc/ADM-db/ress
-[[ -e $HOME/Backup/limit ]] && mv $HOME/Backup/limit /etc/ADM-db/limit
-[[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
+	[[ -e $HOME/Backup/costes ]] && mv $HOME/Backup/costes /etc/ADM-db/sources/costes 
+	[[ -e $HOME/Backup/token ]] && mv $HOME/Backup/token /etc/ADM-db/token 
+	[[ -e $HOME/Backup/resell ]] && mv $HOME/Backup/resell /etc/ADM-db/resell
+	[[ -e $HOME/Backup/Admin-ID ]] && mv $HOME/Backup/Admin-ID /etc/ADM-db/Admin-ID 
+	[[ -e $HOME/Backup/User-ID ]] && mv $HOME/Backup/User-ID /etc/ADM-db/User-ID 
+	[[ -e $HOME/Backup/ress ]] && mv $HOME/Backup/ress /etc/ADM-db/ress
+	[[ -e $HOME/Backup/limit ]] && mv $HOME/Backup/limit /etc/ADM-db/limit
+	[[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
 ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLIDO]"
-[[ ! -e ${CIDdir}/resell ]] && echo "@ChumoGH" > ${CIDdir}/resell
-[[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : chumogh@outlook.com" > /etc/mpayu && echo "593987072611" > /etc/numctc
- rm $HOME/lista-arq &>/dev/null
- systemctl restart BotGen-server &>/dev/null
- bot_gen
+[[ ! -e ${CIDdir}/resell ]] && echo "@Premium" > ${CIDdir}/resell
+[[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : emirjorge@premium.com" > /etc/mpayu && echo "51912345678" > /etc/numctc
+rm $HOME/lista-arq &>/dev/null
+systemctl restart BotGen-server &>/dev/null
 }
 
 ini_token () {
@@ -372,12 +356,13 @@ bot_gen
 }
 
 bot_conf () {
-[[ ! -d $HOME/Backup ]] && mkdir $HOME/Backup
-[[ -e /etc/ADM-db/token ]] && mv /etc/ADM-db/token /root/Backup/token
-[[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID /root/Backup/Admin-ID
 check_ip
 function_verify
-instaled="/etc/ADM-db/sources" && { [[ ! -d "${instaled}" ]] && download; } || bot_gen
+instaled="/etc/ADM-db/sources" 
+if [[ ! -d "${instaled}" ]]; then
+	download
+fi
+bot_gen
 
 }
 
