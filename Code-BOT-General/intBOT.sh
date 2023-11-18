@@ -377,7 +377,8 @@ bot_conf () {
 [[ -e /etc/ADM-db/Admin-ID ]] && mv /etc/ADM-db/Admin-ID /root/Backup/Admin-ID
 check_ip
 function_verify
-instaled="/etc/ADM-db/sources" && [[ ! -d ${instaled} ]] && download
+instaled="/etc/ADM-db/sources" && { [[ ! -d "${instaled}" ]] && download; } || bot_gen
+
 }
 
 msj_prueba () {
