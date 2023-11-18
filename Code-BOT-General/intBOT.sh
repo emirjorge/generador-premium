@@ -66,7 +66,7 @@ permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot")
   echo -e "\n\n\n\e[31m====================================================="
   echo -e "\e[31m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) FUE RECHAZADA!"
   echo -e "     $link No AUTORIZADA el ACCESO "
-  echo -e " SI DESEAS USAR EL BOTGEN CONTACTE A @ChumoGH"
+  echo -e " SI DESEAS USAR EL BOTGEN CONTACTE A @Premium"
   echo -e "\e[31m=====================================================\n\n\n\e[0m"
   [[ -e "/bin/ShellBot.sh" ]] && rm -f /bin/ShellBot.sh
     exit 1
@@ -357,7 +357,7 @@ bot_gen
 
 bot_conf () {
 check_ip
-function_verify
+function_verify && sleep 1
 instaled="/etc/ADM-db/sources" 
 if [[ ! -d "${instaled}" ]]; then
 	download
